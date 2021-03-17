@@ -11,6 +11,9 @@ module BookApp
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
+    # 日本語の言語設定
+    config.i18n.default_locale = :ja
+
     config.generators do |g|
       g.assets false          # CSS, JavaScriptファイルは生成しない
       g.test_framework false  # testファイルは生成しない
