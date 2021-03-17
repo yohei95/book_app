@@ -5,6 +5,11 @@
      <ul class="nav navbar-nav navbar-right">
        <li><%= link_to 'ブックアップとは？', about_path %></li>
        <li><%= link_to 'ユーザー登録(無料)', new_user_registration_path %></li>
+       <li><%= link_to 'ログイン', new_user_session_path  %></li>
+       <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+        <% if user_signed_in? %>
+       <li><%= link_to 'マイページ', user_path(current_user.id)  %></li>
+       <%end %>
      </ul>
    </nav>
  </div>
