@@ -63,3 +63,5 @@ end
 gem 'bootstrap-sass'
 
 gem 'devise'
+
+gem 'pry-rails'
