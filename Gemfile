@@ -60,12 +60,8 @@ group :development do
   gem 'rubocop', require: false
 end
 
-<<<<<<< Updated upstream
 gem 'bootstrap-sass', '3.4.1'
 
-=======
-gem 'bootstrap-sass'
->>>>>>> Stashed changes
 gem 'devise'
 gem 'pry-rails'
 gem 'rails-i18n'
