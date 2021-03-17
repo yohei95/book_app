@@ -60,7 +60,7 @@ group :development do
   gem 'rubocop', require: false
 end
 
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '3.4.1'
 
 gem 'devise'
 

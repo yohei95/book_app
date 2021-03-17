@@ -14,6 +14,7 @@ RSpec.describe User, type: :model do
   context '新規登録できないとき' do
     it 'nameが空では登録できない' do
       @user.name = ''
+      binding.pry
       @user.valid?
       expect(@user.errors.full_messages).to include("Nameを入力してください")
     end
