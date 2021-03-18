@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   get :about,        to: 'static_pages#about'
 
-  resources :users, only: [:show,:edit , :update]
+  resources :users, only: [:index,:show,:edit ,:update,:destroy]
  
  end
