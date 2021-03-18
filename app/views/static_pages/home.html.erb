@@ -1,5 +1,13 @@
+
 <center>
   <h1>ブックアップへようこそ！</h1>
   <h2>読書で得た学びを日常に取り入れましょう</h2>
   <p>読んだだけでは終わらない！</p>
 </center>
+
+<% if user_signed_in? %>
+<div class="col-md-3">
+<p><%= link_to "新規投稿", new_post_path, class: "btn btn-primary btn-lg btn-record" %></p>
+</div>
+<% end %>
+
