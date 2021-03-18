@@ -21,5 +21,4 @@ module ApplicationHelper
     end
     errors_html.html_safe
   end
-
 end
