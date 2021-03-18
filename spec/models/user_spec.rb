@@ -12,27 +12,6 @@ RSpec.describe User, type: :model do
       end
     end
 
-<<<<<<< Updated upstream
-  context '新規登録できないとき' do
-    it 'nameが空では登録できない' do
-      @user.name = ''
-      binding.pry
-      @user.valid?
-      expect(@user.errors.full_messages).to include("Nameを入力してください")
-    end
-    it 'emailが空では登録できない' do
-      @user.email = ''
-      @user.valid?
-      expect(@user.errors.full_messages).to include("Eメールを入力してください")
-    end
-    it '重複したemailが存在する場合登録できない' do
-      @user.save
-      another_user = FactoryBot.build(:user)
-      another_user.email = @user.email
-      another_user.valid?
-      expect(another_user.errors.full_messages).to include('Eメールはすでに存在します')
-    end
-=======
     context '新規登録できないとき' do
       it 'nameが空では登録できない' do
         @user.name = ''
@@ -51,7 +30,6 @@ RSpec.describe User, type: :model do
         another_user.valid?
         expect(another_user.errors.full_messages).to include('Eメールはすでに存在します')
       end
->>>>>>> Stashed changes
 
       it 'パスワードが空では登録できない' do
         @user.password = ''
