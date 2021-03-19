@@ -127,7 +127,7 @@ footer {
   }
 }
 
-/* sidebar */
+/* sidebar(たぶんいらない) */
 
 aside {
   section.user_info {
@@ -187,18 +187,17 @@ aside {
     margin-top: 5em;
     padding-top: 0;
   }
-  .memo {
+  .post-content {
     display: block;
     margin-left: 60px;
-    img {
-      display: block;
-      padding: 5px 0;
-    }
+  }
+  .description {
+    display: block;
   }
   .timestamp {
     color: $gray-light;
     display: block;
-    margin-left: 60px;
+    margin-left: 20px;
   }
   .gravatar {
     float: left;
@@ -214,9 +213,20 @@ aside {
   }
 }
 
-span.picture {
-  margin-top: 10px;
-  input {
-    border: 0;
+//// topページ ////
+.home {
+  .controller {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
+}
+/* thumb-post */
+.thumb-post {
+  border-bottom: solid 1px;
+}
+.box-img,
+.box-text {
+  display: inline-block;
 }

@@ -1,21 +1,29 @@
-
-<div class="center jumbotron">
-  <h1>ブックアップへようこそ！</h1>
-  <h2>読書で得た学びを日常に取り入れましょう</h2>
-  <p>読んだだけでは終わらない！</p>
-</div>
-
-
-  <div class="col-md-3">
-  <p><%= link_to "新規投稿", new_post_path, class: "btn btn-primary btn-lg btn-record" %></p>
+<div class="home pb-md-2">
+  <div class="center jumbotron">
+    <h1>ブックアップへようこそ！</h1>
+    <h2>読書で得た学びを日常に取り入れましょう</h2>
+    <p>読んだだけでは終わらない！</p>
   </div>
-  <div class="col-md-8">
-  <h3>投稿一覧</h3>
-  <% if user_signed_in? %>
-  <%= render 'shared/feed' %>
-    <% else%>
-      <ol class="posts">
-  <%= render @posts%>
-    </ol>
-<% end %>
-   </div>
+
+  <div id="fh5co-portfolio">
+    <div class="container">
+      <div class="col-md-9">
+
+          <p><%= link_to "新規投稿", new_post_path, class: "btn btn-primary btn-lg btn-record" %></p>
+
+        <div class="post-area pt-md-5">
+          <div class="container">
+            <h3 class="text-center pb-md-1 mb-md-5">新着投稿</h3>
+            <div class="posts px-lg-5 ml-lg-5">
+              <ol class="posts px-lg-5 ml-lg-5">
+
+                <%= render @posts%>
+
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

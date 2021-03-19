@@ -1,5 +1,17 @@
 <% provide(:title, "#{@post.title}") %>
+<div class="container">
+  <div class="row">
+    <h2 class="post-title"><%= @post.title %></h2>
 
+    <div class="change-dish">
       <% if current_user == @post.user %>
         <%= link_to "編集", edit_post_path(@post), class: 'edit-post' %>　
       <% end %>
+    </div>
+    
+    <h4><%= @post.memo %></h4>
+    <h4 class="post-reference">Amazonで見る：<%= link_to "#{@post.reference}", @post.reference, target: "_blank" %></h4>
+
+    </div>
+  </div>
+</div>
