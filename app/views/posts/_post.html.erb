@@ -1,12 +1,26 @@
 <li id="post-<%= post.id %>">
-  <%= link_to gravatar_for(post.user, size: 50), post.user %>
-  <span class="user"><%= link_to post.user.name, post.user %></span>
-  <h4><span class="title"><%= post.title %></span><h4>
+<div class="row">
+  <span>
+  <% if post.image.attached? %>
+    <%= image_tag post.image.variant(resize: '200x200'), class: 'post-image' %>
+  <% else %>
+    <%= image_tag 'noimage.png',size: "150x200", class: "post-image" %>
+  <% end %>
+  </span>
+
+  <span class="title"><%= link_to post.title, post_path(post.id) %></span>
+
+
+  <span class="description"><%= post.memo %></span>
+  <span class="plan">プラン：<%= post.plan %></span>
+  <span class="reference"><%= link_to "リンク", post.reference, target: :_blank %></span>
 
   <span class="timestamp">
     <%= time_ago_in_words(post.created_at) %> 前に投稿
     <% if user_signed_in? && current_user.id == post.user_id %>
-      <%= link_to "削除する", post_path(post.id) , method: :delete%>
+      <%= link_to "削除する", post_path(post.id) , method: :delete,
+      data: { confirm: "本当に削除しますか？" } %>
     <% end %>
   </span>
+ </div>
 </li>

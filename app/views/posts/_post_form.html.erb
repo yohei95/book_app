@@ -4,5 +4,34 @@
     <%= f.label :本のタイトル %>　<span class="input-need">※必須</span>
     <%= f.text_field :title, class: 'form-control', id: 'book_title' %>
   </div>
+
+    <div class = 'form-group'>
+    <%= f.label :本の内容 %>　<span class="input-unneed">※任意</span>
+    <%= f.text_field :memo, size: "60x4", class: 'form-control', id: 'book_memo' %>
+  </div>
+
+    <div class = 'form-group'>
+    <%= f.label :活用プラン %> 　<span class="input-unneed">※任意</span>
+    <%= f.text_field :plan, class: 'form-control', id: 'book_plan' %>
+  </div>
+
+    <div class = 'form-group'>
+    <%= f.label :Amazonリンク %>　<span class="input-unneed">※任意</span>
+    <%= f.text_field :reference, class: 'form-control', id: 'book_reference' %>
+  </div>
+
+      <%# 出品画像 %>
+    <div class="img-upload">
+      <div class="weight-bold-text">
+        画像
+      </div>
+      <div class="click-upload">
+        <p>
+          クリックしてファイルをアップロード
+        </p>
+        <%= f.file_field :image, id:"item-image" %>
+      </div>
+    </div>
+
   <%= f.submit "投稿する", class: 'btn btn-primary' %>
 <% end %>
