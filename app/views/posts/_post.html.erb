@@ -4,5 +4,8 @@
   <span class="title"><%= post.title %></span>
   <span class="timestamp">
     Posted <%= time_ago_in_words(post.created_at) %> ago.
+    <% if @user && @user == current_user %>
+      <%= link_to "delete", post_path(post.id) , method: :delete%>
+    <% end %>
   </span>
 </li>

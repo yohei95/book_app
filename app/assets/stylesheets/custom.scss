@@ -69,6 +69,24 @@ p {
   font-size: 1.1em;
   line-height: 1.7em;
 }
+
+// ヘッダー
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+}
+
+#logo:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
 /* forms */
 input,
 textarea,
@@ -95,20 +113,6 @@ input {
   @extend .has-error;
   .form-control {
     color: $state-danger-text;
-  }
-}
-
-// ヘッダー
-.navbar ul {
-  margin-top: 12px;
-  margin-bottom: 12px;
-}
-#logo {
-  float: left;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  img {
-    width: 150px;
   }
 }
 

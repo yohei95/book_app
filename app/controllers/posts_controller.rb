@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
 
   def new
+    @user = current_user
     @post = Post.new
   end
 
@@ -11,10 +12,13 @@ class PostsController < ApplicationController
       redirect_to root_path
     else
       render :new
-    end 
+    end
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to request.referrer || root_url
   end
 
   private
@@ -22,6 +26,4 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title).merge(user_id: current_user.id)
   end
-
 end
-
