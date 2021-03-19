@@ -1,8 +1,8 @@
 <%= form_with model: @post, local: true do |f| %>
   <%= render 'shared/error_messages', object: f.object %> 
   <div class = 'form-group'>
-    <%= f.label :title %>　<span class="input-need">※必須</span>
+    <%= f.label :本のタイトル %>　<span class="input-need">※必須</span>
     <%= f.text_field :title, class: 'form-control', id: 'book_title' %>
   </div>
-  <%= f.submit nil, class: 'btn btn-primary' %>
+  <%= f.submit "投稿する", class: 'btn btn-primary' %>
 <% end %>

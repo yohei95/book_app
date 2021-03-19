@@ -11,11 +11,17 @@
 </div>
   <div class="col-md-8">
     <% if @user.posts.any? %>
+    <h3 class="pb-3"><%= @user.name %>の投稿</h3>
       <h3>Posts (<%= @user.posts.count %>)</h3>
       <ol class="posts">
         <%= render @posts %>
       </ol>
+              <% else %>
+          <h3 class="pb-3"><%= @user.name %>の投稿</h3>
+          <p class="pl-4">まだ投稿がありません</p>
+          <%= link_to "最初の記事を投稿する", new_post_path, class: "btn btn-lg btn-success ml-md-4 mt-md-3 post-btn", data: {"turbolinks"=>false} %>
+     <% end %>
       <%= will_paginate @posts %>
-    <% end %>
+
   </div>
 </div>
