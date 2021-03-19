@@ -5,4 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :name, presence: true
+
+  has_many :posts, dependent: :destroy
+
+  def feed
+    Post.where('user_id = ?', id)
+  end
 end

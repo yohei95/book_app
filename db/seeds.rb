@@ -10,3 +10,9 @@ User.create!(name:  "山田 太郎",
   password:              "foobar",
   password_confirmation: "foobar",
   admin: true)  
+
+# ユーザーの一部を対象にマイクロポストを生成する
+10.times do |n|
+  Post.create!(title: 'test',
+               user_id: 1)
+end

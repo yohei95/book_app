@@ -1,5 +1,21 @@
-<center>
+
+<div class="center jumbotron">
   <h1>ブックアップへようこそ！</h1>
   <h2>読書で得た学びを日常に取り入れましょう</h2>
   <p>読んだだけでは終わらない！</p>
-</center>
+</div>
+
+
+  <div class="col-md-3">
+  <p><%= link_to "新規投稿", new_post_path, class: "btn btn-primary btn-lg btn-record" %></p>
+  </div>
+  <div class="col-md-8">
+  <h3>投稿一覧</h3>
+  <% if user_signed_in? %>
+  <%= render 'shared/feed' %>
+    <% else%>
+      <ol class="posts">
+  <%= render @posts%>
+    </ol>
+<% end %>
+   </div>
