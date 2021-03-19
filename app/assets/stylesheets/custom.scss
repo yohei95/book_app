@@ -175,8 +175,7 @@ aside {
   }
 }
 
-/* posts */
-
+/* 投稿内容 */
 .posts {
   list-style: none;
   padding: 0;
@@ -188,7 +187,7 @@ aside {
     margin-top: 5em;
     padding-top: 0;
   }
-  .content {
+  .memo {
     display: block;
     margin-left: 60px;
     img {
@@ -215,7 +214,7 @@ aside {
   }
 }
 
-span.image {
+span.picture {
   margin-top: 10px;
   input {
     border: 0;
