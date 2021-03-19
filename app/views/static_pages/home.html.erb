@@ -14,6 +14,8 @@
   <% if user_signed_in? %>
   <%= render 'shared/feed' %>
     <% else%>
+      <ol class="posts">
   <%= render @posts%>
+    </ol>
 <% end %>
-    </div>
+   </div>
