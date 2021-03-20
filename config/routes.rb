@@ -4,8 +4,14 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   get :about, to: 'static_pages#about'
 
-  resources :users, only: [:index,:show,:edit ,:update,:destroy]
+  resources :users, only: [:index,:show,:edit ,:update,:destroy] 
+  resources :users do
+    resource :relationships, only: [:create, :destroy]
+    get :follows, on: :member
+    get :followers, on: :member
+  end
   resources :posts do
     resources :comments
   end
+
 end

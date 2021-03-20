@@ -7,6 +7,14 @@
 <%= @user.name %>
 </h1>
     </section>
+          <section class="stats">
+        <%= render 'shared/stats' %>
+      </section>
+      <section class="stats">
+        <div id="follow_button">
+        <%= render partial: 'relationships/relation', locals: { user: @user } %>
+        </div>
+      </section>
   </aside>
 </div>
   <div class="col-md-8">

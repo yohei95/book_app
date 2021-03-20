@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:index, :edit, :update, :destroy,:following, :followers]
   before_action :correct_user, only: [:edit, :update]
 
   def index
@@ -36,6 +36,20 @@ class UsersController < ApplicationController
     else
       redirect_to root_url
     end
+  end
+
+  def follows
+    @title = "フォロー中"
+    @user  = User.find(params[:id])
+    @users = @user.following.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "フォロワー"
+    @user  = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_follow'
   end
 
   private
