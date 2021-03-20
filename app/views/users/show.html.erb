@@ -11,7 +11,9 @@
         <%= render 'shared/stats' %>
       </section>
       <section class="stats">
+        <div id="follow_button">
         <%= render partial: 'relationships/relation', locals: { user: @user } %>
+        </div>
       </section>
   </aside>
 </div>
