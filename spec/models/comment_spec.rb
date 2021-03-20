@@ -5,9 +5,23 @@ RSpec.describe Comment, type: :model do
   end
 
   describe 'コメント' do
-    context 'コメントできるとき' do
+    context 'コメント投稿できるとき' do
       it 'textが存在すれば投稿できる' do
         expect(@comment).to be_valid
+      end
+    end
+
+    context 'コメント投稿できないとき' do
+      it 'textが空では投稿できない' do
+        @comment.text = ''
+        @comment.valid?
+        expect(@comment.errors.full_messages).to include('Textを入力してください')
+      end
+
+      it "内容が50文字以内でないと投稿できない" do
+        @comment.text = "あ" * 51
+        @comment.valid?
+        expect(@comment.errors.full_messages).to include("Textは50文字以内で入力してください")
       end
     end
   end
