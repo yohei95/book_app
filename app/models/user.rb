@@ -7,6 +7,7 @@ class User < ApplicationRecord
   validates :name, presence: true
 
   has_many :posts, dependent: :destroy
+  has_many :comments
 
   def feed
     Post.where('user_id = ?', id)
