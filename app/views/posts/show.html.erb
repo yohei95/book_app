@@ -27,6 +27,10 @@
         <p>
           <strong><%= link_to comment.user.name, "/users/#{comment.user_id}" %>：</strong>
           <%= comment.text %>
+      <% if current_user.id == comment.user_id %>
+        <%= link_to "削除", post_comment_path(comment.id), method: :delete,
+                                      data: { confirm: "本当に削除しますか？" } %>
+      <% end %>
         </p>
       <% end %>
     </div>

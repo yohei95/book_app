@@ -12,7 +12,7 @@
     <div class="box-text">
       <div class="post-content">
         <h4><span><%= post.title %></span></h4>
-        <p>Read by：<%= link_to post.user.name, user_path(post.user_id), class: "post-user link-to", data: {"turbolinks"=>false} %></p>
+        <p>投稿者：<%= link_to post.user.name, user_path(post.user_id), class: "post-user link-to", data: {"turbolinks"=>false} %></p>
 
         
         <p><span class="description">内容：<%= post.memo %></span></p>
