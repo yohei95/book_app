@@ -1,9 +1,8 @@
-<li id="post-<%= post.id %>" >
+<li id="post-<%= post.id %>" class="mb-md-5 pb-md-2 container">
 <div class="thumb-post d-lg-flex flex-lg-row">
 
   <div class="box">
     <div class="box-img">
-
         <% if post.image.attached? %>
           <%= image_tag post.image.variant(resize: '200x200') %>
         <% else %>
@@ -16,12 +15,14 @@
         <p>投稿者：<%= link_to post.user.name, user_path(post.user_id), class: "post-user link-to", data: {"turbolinks"=>false} %></p>
 
         
-        <p><span class="description"><%= post.memo %></span></p>
+        <p><span class="description">内容：<%= post.memo %></span></p>
         <p><span class="plan">プラン：<%= post.plan %></span></p>
-        <p><span class="reference"><%= link_to "リンク", post.reference, target: :_blank %></span></p>
-
+        <% if post.reference != nil%>
+        <p><span class="reference"><%= link_to "Amazonで見る", post.reference, target: :_blank %></span></p>
+        <% end%>
         <span class="timestamp">
           <%= time_ago_in_words(post.created_at) %> 前に投稿
+          <%= link_to "詳しく見る", post_path(post.id), class: "link-to", data: {"turbolinks"=>false} %>
           <% if user_signed_in? && current_user.id == post.user_id %>
             <%= link_to "編集する", edit_post_path(post), class: "link-to",  data: {"turbolinks"=>false} %>
             <%= link_to "削除する", post_path(post.id) , method: :delete,
