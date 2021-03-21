@@ -19,10 +19,6 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
 
 
-  def feed
-    Post.where('user_id = ?', id)
-  end
-
     # ユーザーをフォローする
     def follow(other_user)
       following << other_user

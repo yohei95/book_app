@@ -8,19 +8,68 @@
   <div id="fh5co-portfolio">
     <div class="container">
       <div class="col-md-9">
+      <p><%= link_to "新規投稿", new_post_path, class: "btn btn-primary btn-lg btn-record" %></p>
 
-          <p><%= link_to "新規投稿", new_post_path, class: "btn btn-primary btn-lg btn-record" %></p>
+      
+        <div class="following-user-posts pt-md-5">
+          <div class="container">
+            <h3 class="text-center pb-md-1 mb-md-5">フォロー中のユーザの投稿</h3>
+            <ol class="posts px-lg-5 ml-lg-5">
+            <% if user_signed_in? %>
+              <% if @following_user_posts.exists? %>
+                <% @following_user_posts.each do |post| %>
+                  <div class="following-post d-lg-flex flex-lg-row mb-md-4">
+                    <div class="following-post-image mr-md-3">
+                      <div class="thumb-post d-lg-flex flex-lg-row">
+                        <div class="box">
+                          <div class="box-img">
+                            <% if post.image.attached? %>
+                              <%= image_tag post.image.variant(resize: '200x200') %>
+                            <% else %>
+                              <%= image_tag 'noimage.png',size: "150x200", class: "mr-md-4" %>
+                            <% end %>
+                          </div>
+                          <div class="box-text">
+                            <div class="post-content">
+                              <h4><span><%= post.title %></span></h4>
+                              <p>投稿者：<%= link_to post.user.name, user_path(post.user_id), class: "post-user link-to", data: {"turbolinks"=>false} %></p>
+                              <p><span class="description">内容：<%= post.memo %></span></p>
+                              <p><span class="plan">行動プラン：<%= post.plan %></span></p>
+                                <% if post.reference != nil%>
+                                  <p><span class="reference"><%= link_to "Amazonで見る", post.reference, target: :_blank %></span></p>
+                                <% end%>
+                              <span class="timestamp">
+                              <%= time_ago_in_words(post.created_at) %> 前に投稿
+                              <%= link_to "詳しく見る", post_path(post.id), class: "link-to", data: {"turbolinks"=>false} %>
+                                <% if current_user.id == post.user_id %>
+                                  <%= link_to "編集する", edit_post_path(post), class: "link-to",  data: {"turbolinks"=>false} %>
+                                  <%= link_to "削除する", post_path(post.id) , method: :delete,
+                                  data: { confirm: "本当に削除しますか？" } %>
+                                <% end %>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <%end%>
+              <% else %>
+                <p class="text-center">他のユーザをフォローするとその投稿が表示されます</p>
+              <% end %>
+            <% else %>
+            <p class="text-center">ログインするとフォローしたユーザの投稿が表示されます</p>
+            <% end %>
+          </div>
+        </div><br>
 
         <div class="post-area pt-md-5">
           <div class="container">
             <h3 class="text-center pb-md-1 mb-md-5">新着投稿</h3>
-            <div class="posts px-lg-5 ml-lg-5">
               <ol class="posts px-lg-5 ml-lg-5">
-
                 <%= render @posts%>
-
               </ol>
-            </div>
+              <%= will_paginate @posts %>
           </div>
         </div>
       </div>
