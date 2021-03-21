@@ -3,7 +3,12 @@
   <aside class="col-md-4">
     <section class="user_info">
 <h1>
-<%= gravatar_for @user %><br>
+  
+        <% if @user.image.attached? %>
+          <%= image_tag @user.image.variant(resize: '100x100'), class: 'user-picture' %>
+        <% else %>
+          <%= image_tag 'noimageman.png', :size =>'100x100' ,class: 'user-picture'  %>
+        <% end %>
 <%= @user.name %>
 </h1>
     </section>
