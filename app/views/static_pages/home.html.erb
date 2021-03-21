@@ -16,7 +16,7 @@
             <h3 class="text-center pb-md-1 mb-md-5">フォロー中のユーザの投稿</h3>
             <ol class="posts px-lg-5 ml-lg-5">
             <% if user_signed_in? %>
-              <% if @following_user_posts != nil %>
+              <% if @following_user_posts.exists? %>
                 <% @following_user_posts.each do |post| %>
                   <div class="following-post d-lg-flex flex-lg-row mb-md-4">
                     <div class="following-post-image mr-md-3">
@@ -55,7 +55,7 @@
                   </div>
                 <%end%>
               <% else %>
-              <p class="text-center">他のユーザをフォローするとその投稿が表示されます</p>
+                <p class="text-center">他のユーザをフォローするとその投稿が表示されます</p>
               <% end %>
             <% else %>
             <p class="text-center">ログインするとフォローしたユーザの投稿が表示されます</p>
