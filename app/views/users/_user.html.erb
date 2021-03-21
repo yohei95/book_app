@@ -1,5 +1,10 @@
 <li>
-  <%= gravatar_for user, size: 50 %>
+  <% if user.image.attached? %>
+    <%= image_tag user.image.variant(resize: '50x50') %>
+  <% else %>
+    <%= image_tag 'noimageman.png', :size =>'50x50' %>
+  <% end %>
+
   <%= link_to user.name, user %>
   <% if user_signed_in?%>
   <% if (current_user.admin? && current_user != user) || (!current_user.admin? && current_user == user) %> 

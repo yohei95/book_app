@@ -17,6 +17,7 @@ class User < ApplicationRecord
             foreign_key: "followed_id",
             dependent:   :destroy
   has_many :followers, through: :passive_relationships, source: :follower
+  has_one_attached :image
 
 
     # ユーザーをフォローする
