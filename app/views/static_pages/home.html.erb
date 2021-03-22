@@ -31,9 +31,8 @@
                           </div>
                           <div class="box-text">
                             <div class="post-content">
-                              <h4><span><%= post.title %></span></h4>
+                              <h4><span>本のタイトル：<%= post.title %></span></h4>
                               <p>投稿者：<%= link_to post.user.name, user_path(post.user_id), class: "post-user link-to", data: {"turbolinks"=>false} %></p>
-                              <p><span class="description">内容：<%= post.memo %></span></p>
                               <p><span class="plan">行動プラン：<%= post.plan %></span></p>
                                 <% if post.reference != nil%>
                                   <p><span class="reference"><%= link_to "Amazonで見る", post.reference, target: :_blank %></span></p>
