@@ -48,13 +48,6 @@ ActiveRecord::Schema.define(version: 2021_03_22_053941) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "dones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "post_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.text "memo"
