@@ -1,16 +1,26 @@
 <% provide(:title, "#{@post.title}") %>
 <div class="container">
   <div class="row">
+    <h1>投稿詳細</h1>
     <h2 class="post-title"><%= @post.title %></h2>
-
     <div class="change-dish">
       <% if current_user == @post.user %>
         <%= link_to "編集", edit_post_path(@post), class: 'edit-post' %>　
       <% end %>
     </div>
+     <h4><%= @post.user.name %></h4>
+             <% if @post.image.attached? %>
+          <%= image_tag @post.image.variant(resize: '200x200') %>
+        <% else %>
+          <%= image_tag 'noimageman.png',size: "150x200", class: "mr-md-4" %>
+        <% end %>
+
+
     
-    <h4><%= @post.memo %></h4>
-    <h4 class="post-reference">Amazonで見る：<%= link_to "#{@post.reference}", @post.reference, target: "_blank" %></h4>
+    <h4>本の内容：<%= @post.memo %></h4>
+        <% if @post.reference != nil%>
+        <p><span class="reference"><%= link_to "Amazonで見る", @post.reference, target: :_blank %></span></p>
+        <% end%>
 <%# あとで編集 %>
   <div class="container">
     <% if user_signed_in? %>
