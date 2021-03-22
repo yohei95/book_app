@@ -1,4 +1,4 @@
-class Done < ApplicationRecord
+class Completion < ApplicationRecord
   belongs_to :user
   belongs_to :post
 end

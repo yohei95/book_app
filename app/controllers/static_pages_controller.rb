@@ -12,6 +12,6 @@ class StaticPagesController < ApplicationController
       user.name = 'ゲスト'
     end
     sign_in user
-    redirect_to root_path
+    redirect_to root_path,notice: 'ゲストユーザーとしてログインしました。'
   end
 end
