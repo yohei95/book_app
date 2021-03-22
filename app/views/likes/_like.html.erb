@@ -1,0 +1,20 @@
+  
+<% if user_signed_in? %>
+  <% if current_user.liked_by?(post.id) %>
+    <p>
+      <%= link_to destroy_like_path(post), class: "link-to unlike", method: :delete, remote: true do %>
+        <i class="fas fa-thumbs-up fa-2x"></i>
+      <% end %>
+      いいね！済み<span class="ml-3"><%= post.likes.count %>件のいいね！</span>
+    </p>
+  <% else%>
+    <p>
+      <%= link_to create_like_path(post), class: "link-to like", method: :post, remote: true do %>
+        <i class="far fa-thumbs-up fa-2x"></i>
+      <% end %>
+      いいね！する<span class="ml-3"><%= post.likes.count %>件のいいね！</span>
+    </p>
+  <% end %>
+<% else %>
+  <p><%= post.likes.count %><span>件のいいね！</span></p>
+<% end %>

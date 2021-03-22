@@ -1,4 +1,5 @@
 <% provide(:title, "#{@post.title}") %>
+
 <div class="container">
   <div class="row">
     <h1>投稿詳細</h1>
@@ -28,6 +29,11 @@
       <% end %>
       <% end %>
 
+        <div class="favorite">
+          <div id="likes_buttons_<%= @post.id %>">
+            <%= render partial: 'likes/like', locals: { post: @post }%>
+          </div>
+        </div>
 
         <% if @post.reference != nil%>
         <p><span class="reference"><%= link_to "Amazonで見る", @post.reference, target: :_blank %></span></p>
