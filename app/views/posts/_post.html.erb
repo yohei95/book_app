@@ -6,7 +6,7 @@
         <% if post.image.attached? %>
           <%= image_tag post.image.variant(resize: '200x200') %>
         <% else %>
-          <%= image_tag 'noimageman.png',size: "150x200", class: "mr-md-4" %>
+          <%= image_tag 'noimage.png',size: "150x200", class: "mr-md-4" %>
         <% end %>
     </div>
     <div class="box-text">
@@ -14,8 +14,6 @@
         <h4><span>本のタイトル：<%= post.title %></span></h4>
         <p>投稿者：<%= link_to post.user.name, user_path(post.user_id), class: "post-user link-to", data: {"turbolinks"=>false} %></p>
 
-        
-        <p><span class="description">内容：<%= post.memo %></span></p>
         <p><span class="plan">行動プラン：<%= post.plan %></span></p>
         <% if post.reference != nil%>
         <p><span class="reference"><%= link_to "Amazonで見る", post.reference, target: :_blank %></span></p>
