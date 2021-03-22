@@ -25,6 +25,7 @@ User.create!(name:  "山田 太郎",
 # ユーザーの一部を対象にマイクロポストを生成する
 10.times do |n|
   Post.create!(title: 'test',
+              plan: '金曜日までに実装する！',
                 user_id: 1)
 end
 

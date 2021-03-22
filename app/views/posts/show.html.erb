@@ -19,17 +19,27 @@
     
     <h4>本の内容：<%= @post.memo %></h4>
     <h4>行動プラン：<%= @post.plan %></h4>
+
+      <% if current_user==@post.user %>
+      <% if @post.completed_by?(@post.user) %> 
+        <%=link_to "完了", post_completion_path(@post.id), method: :delete ,class: "btn btn-primary complete"%>
+      <% else %>
+        <%=link_to "行動中", post_completions_path(@post.id), method: :post,class: "btn btn-primary complete" %>
+      <% end %>
+      <% end %>
+
+
         <% if @post.reference != nil%>
         <p><span class="reference"><%= link_to "Amazonで見る", @post.reference, target: :_blank %></span></p>
         <% end%>
-<%# あとで編集 %>
-  <div class="container">
+<%# あとで編集 %><br>
+  <p><div class="container">
     <% if user_signed_in? %>
       <%= form_with(model: [@post, @comment], local: true) do |form| %>
         <%= form.text_area :text, placeholder: "コメントを追加", rows: "2" %>
         <%= form.submit "コメント", class: "btn btn-primary" %>
       <% end %>
-    <% end %>
+    <% end %></p>
         <div class="comments">
       <h4>＜コメント一覧＞</h4>
       <% @comments.each do |comment| %>
@@ -51,3 +61,7 @@
     
   </div>
 </div>
+
+
+
+

@@ -17,7 +17,9 @@ class User < ApplicationRecord
             foreign_key: "followed_id",
             dependent:   :destroy
   has_many :followers, through: :passive_relationships, source: :follower
+  has_many :completions, dependent: :destroy
   has_one_attached :image
+  
 
 
     # ユーザーをフォローする
@@ -32,5 +34,4 @@ class User < ApplicationRecord
     def following?(other_user)
       following.include?(other_user)
     end
-    
 end
