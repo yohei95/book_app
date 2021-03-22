@@ -1,4 +1,4 @@
-<li id="post-<%= post.id %>" class="mb-md-5 pb-md-2 container">
+<li id="post_<%= post.id %>" class="mb-md-5 pb-md-2 container">
 <div class="thumb-post d-lg-flex flex-lg-row">
 
   <div class="box">
@@ -18,6 +18,15 @@
         <% if post.reference != nil%>
         <p><span class="reference"><%= link_to "Amazonで見る", post.reference, target: :_blank %></span></p>
         <% end%>
+
+        <div class="favorite">
+          <div id="likes_buttons_<%= post.id %>">
+            <%= render partial: 'likes/like', locals: { post: post }%>
+          </div>
+        </div>
+
+
+
         <span class="timestamp">
           <%= time_ago_in_words(post.created_at) %> 前に投稿
           <h4><%= link_to "詳しく見る", post_path(post.id), class: "link-to", data: {"turbolinks"=>false} %></h4>
