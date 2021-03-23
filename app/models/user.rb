@@ -18,7 +18,7 @@ class User < ApplicationRecord
                                    dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :completions, dependent: :destroy
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_one_attached :image
 
   # ユーザーをフォローする
