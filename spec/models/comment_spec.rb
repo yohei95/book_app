@@ -18,10 +18,22 @@ RSpec.describe Comment, type: :model do
         expect(@comment.errors.full_messages).to include('Textを入力してください')
       end
 
-      it "内容が50文字以内でないと投稿できない" do
-        @comment.text = "あ" * 51
+      it '内容が50文字以内でないと投稿できない' do
+        @comment.text = 'あ' * 51
         @comment.valid?
-        expect(@comment.errors.full_messages).to include("Textは50文字以内で入力してください")
+        expect(@comment.errors.full_messages).to include('Textは50文字以内で入力してください')
+      end
+
+      it 'ユーザーが紐付いていなければ投稿できない' do
+        @comment.user = nil
+        @comment.valid?
+        expect(@comment.errors.full_messages).to include('Userを入力してください')
+      end
+
+      it 'Post（投稿）が紐付いていなければ投稿できない' do
+        @comment.post = nil
+        @comment.valid?
+        expect(@comment.errors.full_messages).to include('Postを入力してください')
       end
     end
   end

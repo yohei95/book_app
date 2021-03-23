@@ -1,15 +1,13 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create,:edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def show
-    @user = current_user
     @post = Post.find(params[:id])
     @comment = Comment.new
     @comments = @post.comments.includes(:user)
   end
 
   def new
-    @user = current_user
     @post = Post.new
   end
 
@@ -23,7 +21,6 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @user = current_user
     @post = Post.find(params[:id])
   end
 

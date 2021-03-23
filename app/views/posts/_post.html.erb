@@ -15,10 +15,6 @@
         <p>投稿者：<%= link_to post.user.name, user_path(post.user_id), class: "post-user link-to", data: {"turbolinks"=>false} %></p>
 
         <p><h4><span class="plan">行動プラン：<%= post.plan %></h4></span></p>
-        <% if post.reference != nil%>
-        <p><span class="reference"><%= link_to "Amazonで見る", post.reference, target: :_blank %></span></p>
-        <% end%>
-
 
 
 
