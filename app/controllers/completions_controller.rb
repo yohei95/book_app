@@ -1,5 +1,4 @@
 class CompletionsController < ApplicationController
-
   before_action :done_params
 
   def create

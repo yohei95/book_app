@@ -4,9 +4,7 @@ class Post < ApplicationRecord
   has_many :completions, dependent: :destroy
   has_many :likes
   has_one_attached :image
-  
+
   validates :title, presence: true
   validates :plan, presence: true
-
-
 end
