@@ -19,16 +19,19 @@
         <p><span class="reference"><%= link_to "Amazonで見る", post.reference, target: :_blank %></span></p>
         <% end%>
 
+
+
+
+
+        <span class="timestamp">
+          <%= time_ago_in_words(post.created_at) %> 前に投稿
+
         <div class="favorite">
           <div id="likes_buttons_<%= post.id %>">
             <%= render partial: 'likes/like', locals: { post: post }%>
           </div>
         </div>
 
-
-
-        <span class="timestamp">
-          <%= time_ago_in_words(post.created_at) %> 前に投稿
           <h4><%= link_to "詳しく見る", post_path(post.id), class: "link-to", data: {"turbolinks"=>false} %></h4>
           <p><% if user_signed_in? && current_user.id == post.user_id %>
             <%= link_to "編集する", edit_post_path(post), class: "link-to",  data: {"turbolinks"=>false} %>
