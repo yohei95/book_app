@@ -4,6 +4,7 @@ RSpec.describe Relationship, type: :model do
   let(:user) { FactoryBot.create(:user) }
   let(:other_user) { FactoryBot.create(:user) }
   let(:relationship) { user.active_relationships.build(followed_id: other_user.id) }
+  sleep 1.0
 
       describe 'フォロー・フォロワー関係' do
       context 'フォローできるとき' do

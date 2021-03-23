@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe Like, type: :model do
   before do
     user = FactoryBot.create(:user)
-    item = FactoryBot.create(:post)
-    @like = FactoryBot.build(:like, user_id: user.id, post_id: item.id)
+    post = FactoryBot.create(:post)
+    @like = FactoryBot.build(:like, user_id: user.id, post_id: post.id)
     sleep 0.1
   end
 
