@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
   post '/static_pages/guest_sign_in', to:'static_pages#new_guest'
-  get :about, to: 'static_pages#about'
 
   resources :users, only: [:index,:show,:edit ,:update,:destroy] 
   resources :users do
