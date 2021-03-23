@@ -9,7 +9,4 @@ class Post < ApplicationRecord
   validates :plan, presence: true
 
 
-  def completed_by?(user)
-    completions.where(user_id: user.id).exists?
-  end
 end

@@ -13,8 +13,10 @@ Rails.application.routes.draw do
   end
   resources :posts do
     resources :comments
-    resources :completions, only: [:create, :destroy]
   end
+
+  post 'completion/:id' => 'completions#create', as: 'create_completion'
+  delete 'completion/:id' => 'completions#destroy', as: 'destroy_completion'
 
   post 'like/:id' => 'likes#create', as: 'create_like'
   delete 'like/:id' => 'likes#destroy', as: 'destroy_like'

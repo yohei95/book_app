@@ -21,13 +21,12 @@
     <h4>本の内容：<%= @post.memo %></h4>
     <h4>行動プラン：<%= @post.plan %></h4>
 
-      <% if current_user==@post.user %>
-      <% if @post.completed_by?(@post.user) %> 
-        <%=link_to "完了", post_completion_path(@post.id), method: :delete ,class: "btn btn-primary complete"%>
-      <% else %>
-        <%=link_to "行動中", post_completions_path(@post.id), method: :post,class: "btn btn-primary complete" %>
-      <% end %>
-      <% end %>
+
+        <div class="completion">
+          <div id="completions_buttons_<%= @post.id %>">
+            <%= render partial: 'completions/completion', locals: { post: @post}%>
+          </div>
+        </div>
 
         <div class="favorite">
           <div id="likes_buttons_<%= @post.id %>">

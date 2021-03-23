@@ -39,4 +39,8 @@ class User < ApplicationRecord
     def liked_by?(post_id)
       likes.where(post_id: post_id).exists?
     end
+
+    def completed_by?(post_id)
+      completions.where(post_id: post_id).exists?
+    end
 end
