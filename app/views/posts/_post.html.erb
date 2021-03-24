@@ -12,12 +12,18 @@
     <div class="box-text">
       <div class="post-content">
         <h4><span>本のタイトル：<%= post.title %></span></h4>
-        <p>投稿者：<%= link_to post.user.name, user_path(post.user_id), class: "post-user link-to", data: {"turbolinks"=>false} %></p>
+        <p>投稿者：<%= link_to post.user.name, user_path(post.user_id), class: "post-user link-to", data: {"turbolinks"=>false} %>       
 
-        <p><h4><span class="plan">行動プラン：<%= post.plan %></h4></span></p>
 
-        <span class="timestamp">
-          <%= time_ago_in_words(post.created_at) %> 前に投稿
+        <p><h4><span class="plan">TO DO：<%= post.plan %></h4></span></p>
+
+                <div class="completion">
+          <div id="completions_buttons_<%= post.id %>">
+            <%= render partial: 'completions/completion', locals: { post: post}%>
+          </div>
+        </div>
+
+
 
         <div class="favorite">
           <div class="likes_buttons_<%= post.id %>">
@@ -26,6 +32,8 @@
         </div>
 
           <h4><%= link_to "詳しく見る", post_path(post.id), class: "link-to", data: {"turbolinks"=>false} %></h4>
+                   <span class="timestamp">
+          <%= time_ago_in_words(post.created_at) %> 前に投稿</p>
           <p><% if user_signed_in? && current_user.id == post.user_id %>
             <%= link_to "編集する", edit_post_path(post), class: "link-to",  data: {"turbolinks"=>false} %>
             <%= link_to "削除する", post_path(post.id) , method: :delete,
