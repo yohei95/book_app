@@ -16,14 +16,11 @@
 
         <p><h4><span class="plan">行動プラン：<%= post.plan %></h4></span></p>
 
-
-
-
         <span class="timestamp">
           <%= time_ago_in_words(post.created_at) %> 前に投稿
 
         <div class="favorite">
-          <div id="likes_buttons_<%= post.id %>">
+          <div class="likes_buttons_<%= post.id %>">
             <%= render partial: 'likes/like', locals: { post: post }%>
           </div>
         </div>
