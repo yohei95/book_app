@@ -1,47 +1,42 @@
-<li id="post_<%= post.id %>" class="mb-md-5 pb-md-2 container">
-<div class="thumb-post d-lg-flex flex-lg-row">
-
-  <div class="box">
-    <div class="box-img">
+<li id="post_<%= post.id %>" >
+  <div class="thumb-post">
+    <div class="box">
+      <div class="box-img">
         <% if post.image.attached? %>
           <%= image_tag post.image.variant(resize: '200x200') %>
         <% else %>
-          <%= image_tag 'noimage.png',size: "150x200", class: "mr-md-4" %>
+          <%= image_tag 'noimage.png',size: "150x200" %>
         <% end %>
-    </div>
-    <div class="box-text">
-      <div class="post-content">
-        <h4><span>本のタイトル：<%= post.title %></span></h4>
-        <p>投稿者：<%= link_to post.user.name, user_path(post.user_id), class: "post-user link-to", data: {"turbolinks"=>false} %>       
+      </div>
+      <div class="box-text">
+        <div class="post-content">
+        <h4>本のタイトル：<%= post.title %></h4>
+          投稿者：<%= link_to post.user.name, user_path(post.user_id), class: "post-user link-to"%>
+              
+          <h4 class="plan">To Do：<%= post.plan %></h4>
+            <div class="completion">
+              <div id="completions_buttons_<%= post.id %>">
+              <%= render partial: 'completions/completion', locals: { post: post}%>
+              </div>
+            </div>
 
+            <div class="favorite">
+              <div class="likes_buttons_<%= post.id %>">
+              <%= render partial: 'likes/like', locals: { post: post }%>
+              </div>
+            </div>
 
-        <p><h4><span class="plan">TO DO：<%= post.plan %></h4></span></p>
-
-                <div class="completion">
-          <div id="completions_buttons_<%= post.id %>">
-            <%= render partial: 'completions/completion', locals: { post: post}%>
-          </div>
-        </div>
-
-
-
-        <div class="favorite">
-          <div class="likes_buttons_<%= post.id %>">
-            <%= render partial: 'likes/like', locals: { post: post }%>
-          </div>
-        </div>
-
-          <h4><%= link_to "詳しく見る", post_path(post.id), class: "link-to", data: {"turbolinks"=>false} %></h4>
-                   <span class="timestamp">
+          <h4><%= link_to "詳しく見る", post_path(post.id), class: "link-to"%></h4>
+          <span class="timestamp">
           <%= time_ago_in_words(post.created_at) %> 前に投稿</p>
           <p><% if user_signed_in? && current_user.id == post.user_id %>
-            <%= link_to "編集する", edit_post_path(post), class: "link-to",  data: {"turbolinks"=>false} %>
+            <%= link_to "編集する", edit_post_path(post), class: "link-to"%>
             <%= link_to "削除する", post_path(post.id) , method: :delete,
             data: { confirm: "本当に削除しますか？" } %>
           <% end %></p>
-        </span>
+          </span>
+        </div>
       </div>
-    </div>
     </div>
   </div>
 </li>
