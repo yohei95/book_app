@@ -20,11 +20,11 @@ RSpec.describe Completion, type: :model do
         @completion.valid?
         expect(@completion.errors.full_messages).to include('Userを入力してください')
       end
-    it 'post_idがnilでは投稿できない' do
-      @completion.post_id = nil
-      @completion.valid?
-      expect(@completion.errors.full_messages).to include('Postを入力してください')
+      it 'post_idがnilでは投稿できない' do
+        @completion.post_id = nil
+        @completion.valid?
+        expect(@completion.errors.full_messages).to include('Postを入力してください')
+      end
     end
-  end
   end
 end
