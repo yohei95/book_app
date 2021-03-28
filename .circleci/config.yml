@@ -16,10 +16,6 @@ jobs:
 
     steps:
       - checkout
-      - run:
-        name: yarn Install
-        command: yarn install
-      - run: bundle exec bin/webpack
 
       # Download and cache dependencies
       - restore_cache:
@@ -46,6 +42,10 @@ jobs:
       # Database setup
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
+
+      - run:
+        name: yarn Install
+        command: yarn install
 
       # rubocopを走らせる記述
       - run:
