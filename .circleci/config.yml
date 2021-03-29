@@ -1,0 +1,85 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.6.5-node-browsers
+        environment:
+          - BUNDLER_VERSION: 2.0.2
+          - RAILS_ENV: "test"
+
+      - image: circleci/mysql:5.6
+        environment:
+          MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+          MYSQL_ROOT_HOST: "127.0.0.1"
+
+    working_directory: ~/book_app
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run:
+          name: install dependencies
+          command: |
+
+
+            gem install bundler -v 2.0.2
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
+
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+
+      - run: mv config/database.yml.ci config/database.yml
+
+      # Database setup
+      - run: bundle exec rake db:create
+      - run: bundle exec rake db:schema:load
+
+      - run:
+          name: yarn Install
+          command: yarn install
+      - run: bundle exec bin/webpack
+
+      # rubocopを走らせる記述
+      - run:
+          name: Rubocop
+          command: bundle exec rubocop
+
+      # rspecを走らせる記述
+      # run tests!
+      - run:
+          name: run tests
+          command: |
+            mkdir /tmp/test-results
+            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
+              circleci tests split --split-by=timings)"
+
+            bundle exec rspec \
+              --format progress \
+              --format RspecJunitFormatter \
+              --out /tmp/test-results/rspec.xml \
+              --format progress \
+              $TEST_FILES
+
+      # collect reports
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
+
+      # - add_ssh_keys:
+      #     fingerprints:
+      #       - "28:39:c3:5b:5c:09:2c:b4:13:b6:ae:10:fd:5e:b3:60"
+
+      # - deploy:
+      #     name: Capistrano deploy
+      #     command: bundle exec cap production deploy

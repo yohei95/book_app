@@ -1,7 +1,5 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-// @import "font-awesome-sprockets";
-// @import "font-awesome";
 
 // ミックスイン
 
@@ -137,12 +135,8 @@ footer {
     padding: 10px 0;
     border-top: 1px solid #e8e8e8;
   }
-  .user {
-    margin-top: 5em;
-    padding-top: 0;
-  }
+
   .post-content {
-    display: block;
     margin-left: 60px;
   }
   .description {
@@ -152,13 +146,6 @@ footer {
     color: $gray-light;
     display: block;
     margin-left: 20px;
-  }
-}
-
-aside {
-  textarea {
-    height: 100px;
-    margin-bottom: 5px;
   }
 }
 
@@ -172,14 +159,14 @@ aside {
   }
 }
 /* thumb-post */
-.thumb-post {
-  border-bottom: solid 1px;
-}
-.box-img,
-.box-text {
-  display: inline-block;
-}
+// .thumb-post {
+//   border-bottom: solid 1px;
+// }
 
+.box {
+  display: flex;
+  align-items: center;
+}
 .user-picture {
   border-radius: 50%;
 }

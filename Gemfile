@@ -42,6 +42,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'rspec_junit_formatter'
   # テスト高速化
   gem 'spring-commands-rspec' 
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.

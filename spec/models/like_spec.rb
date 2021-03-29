@@ -20,11 +20,11 @@ RSpec.describe Like, type: :model do
         @like.valid?
         expect(@like.errors.full_messages).to include('Userを入力してください')
       end
-    it 'post_idがnilでは投稿できない' do
-      @like.post_id = nil
-      @like.valid?
-      expect(@like.errors.full_messages).to include('Postを入力してください')
+      it 'post_idがnilでは投稿できない' do
+        @like.post_id = nil
+        @like.valid?
+        expect(@like.errors.full_messages).to include('Postを入力してください')
+      end
     end
-  end
   end
 end

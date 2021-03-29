@@ -11,15 +11,15 @@ RSpec.describe Post, type: :model do
         expect(@post).to be_valid
       end
       it 'memoは空でも投稿できる' do
-        @post.memo=''
+        @post.memo = ''
         expect(@post).to be_valid
       end
       it 'referenceは空でも投稿できる' do
-        @post.reference=''
+        @post.reference = ''
         expect(@post).to be_valid
       end
       it '画像は空でも投稿できる' do
-        @post.image=nil
+        @post.image = nil
         expect(@post).to be_valid
       end
     end
