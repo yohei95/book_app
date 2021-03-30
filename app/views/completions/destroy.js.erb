@@ -1,3 +1,1 @@
-<%# app/views/completions/destroy.js.erb %>
-
 $('#completions_buttons_<%= @post.id %>').html("<%= j(render partial: 'completions/completion', locals: {post: @post}) %>");
