@@ -1,24 +1,23 @@
 <h4>  
   <% if user_signed_in? && current_user== post.user%>
   <% if current_user.completed_by?(post.id) %>
-    <p>達成状況：完了
-      <%= link_to destroy_completion_path(post), class: "link-to unlike", method: :delete, remote: true do %>
-        <i class="far fa-smile"></i>
-      <% end %>
+    <p>達成状況：<%= link_to destroy_completion_path(post), class: "link-to unlike", method: :delete, remote: true do %>
+        <i class="far fa-check-square"></i>
+      <% end %>完了
 
     </p>
   <% else%>
-    <p>達成状況：未達成
-      <%= link_to create_completion_path(post), class: "link-to like", method: :post, remote: true do %>
-        <i class="fas fa-smile"></i>
-      <% end %>
+    <p>達成状況：<%= link_to create_completion_path(post), class: "link-to like", method: :post, remote: true do %>
+        <i class="far fa-square"></i>
+      <% end %>未達成
+
 
     </p>
   <% end %>
   <% else %>
   <% if post.user.completed_by?(post.id) %>
-  達成状況：完了<i class="far fa-smile"></i>
+  達成状況：<i class="far fa-check-square"></i> 完了
   <%else%>
-  達成状況：未達成<i class="fas fa-smile"></i>
+  達成状況：<i class="far fa-square"></i> 未達成
   <%end%>
 <% end %></h4>
