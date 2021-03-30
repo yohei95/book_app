@@ -4,7 +4,7 @@ RSpec.describe Completion, type: :model do
     user = FactoryBot.create(:user)
     item = FactoryBot.create(:post)
     @completion = FactoryBot.build(:completion, user_id: user.id, post_id: item.id)
-    sleep 0.1
+    sleep(1)
   end
 
   describe 'プラン完了' do

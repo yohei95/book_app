@@ -2,6 +2,7 @@ require 'rails_helper'
 RSpec.describe Comment, type: :model do
   before do
     @comment = FactoryBot.build(:comment)
+    sleep(1)
   end
 
   describe 'コメント' do

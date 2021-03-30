@@ -2,7 +2,7 @@ require 'rails_helper'
 RSpec.describe Post, type: :model do
   before do
     @post = FactoryBot.build(:post)
-    sleep 1.0
+    sleep(1)
   end
 
   describe '投稿' do

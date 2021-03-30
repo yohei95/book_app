@@ -5,7 +5,7 @@ RSpec.describe Like, type: :model do
     user = FactoryBot.create(:user)
     post = FactoryBot.create(:post)
     @like = FactoryBot.build(:like, user_id: user.id, post_id: post.id)
-    sleep 0.1
+    sleep(1)
   end
 
   describe 'いいね' do
