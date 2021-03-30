@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
 
   def index
-    @user = current_user
     @users = User.paginate(page: params[:page])
   end
 
@@ -30,7 +29,7 @@ class UsersController < ApplicationController
     if current_user.admin?
       @user.destroy
       redirect_to users_url
-    elsif current_user?(@user)
+    elsif current_user == @user
       @user.destroy
       redirect_to root_url
     else
@@ -63,7 +62,7 @@ class UsersController < ApplicationController
     redirect_to(root_url) unless @user == current_user
   end
 
-  def current_user?(user)
-    user && user == current_user
-  end
+  # def current_user?(user)
+  #   user && user == current_user
+  # end
 end

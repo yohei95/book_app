@@ -9,7 +9,7 @@
   <% else%>
     <p>達成状況：<%= link_to create_completion_path(post), class: "link-to like", method: :post, remote: true do %>
         <i class="far fa-square"></i>
-      <% end %>未達成
+      <% end %>未完了
 
 
     </p>
@@ -18,6 +18,6 @@
   <% if post.user.completed_by?(post.id) %>
   達成状況：<i class="far fa-check-square"></i> 完了
   <%else%>
-  達成状況：<i class="far fa-square"></i> 未達成
+  達成状況：<i class="far fa-square"></i> 未完了
   <%end%>
 <% end %></h4>

@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :find_post, only: [:show, :edit, :update, :destroy]
 
   def show
-    @post = Post.find(params[:id])
     @comment = Comment.new
     @comments = @post.comments.includes(:user)
   end
@@ -21,11 +21,9 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
   end
 
   def update
-    @post = Post.find(params[:id])
     if @post.update(post_params)
       redirect_to @post
     else
@@ -34,14 +32,17 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
     @post.destroy
-    redirect_to request.referrer || root_url
+    redirect_to root_path
   end
 
   private
 
   def post_params
     params.require(:post).permit(:title, :image, :memo, :plan, :reference).merge(user_id: current_user.id)
+  end
+
+  def find_post
+    @post = Post.find(params[:id])
   end
 end
