@@ -1,52 +1,52 @@
 <% provide(:title, "#{@post.title}") %>
 
 <div class="container">
-  <div class="row">
+
     <h1>投稿詳細</h1>
-    <h3 class="post-title"><%= @post.title %></h3>
-    <div class="change-dish">
+
+    
+
       <% if current_user == @post.user %>
-        <%= link_to "編集", edit_post_path(@post), class: 'edit-post' %>　
+        <%= link_to "編集する", edit_post_path(@post) %>　
       <% end %>
-    </div>
-     <p>投稿者：<%= link_to @post.user.name, user_path(@post.user_id), class: "post-user link-to", data: {"turbolinks"=>false} %></p>
-             <% if @post.image.attached? %>
+
+    <h3 class="post-title"><%= @post.title %></h3>
+
+    <p>投稿者：<%= link_to @post.user.name, user_path(@post.user_id)%></p>
+            <% if @post.image.attached? %>
           <%= image_tag @post.image.variant(resize: '200x200') %>
         <% else %>
           <%= image_tag 'noimage.png',size: "150x200", class: "mr-md-4" %>
         <% end %>
-
-
     
-    <h4>メモ：<%= @post.memo %></h4>
     <h4>To Do：<%= @post.plan %></h4>
+    <% if @post.memo != '' %>
+    <h4>メモ：<%= @post.memo %></h4>
+    <%end%>
 
 
-        <div class="completion">
           <div id="completions_buttons_<%= @post.id %>">
             <%= render partial: 'completions/completion', locals: { post: @post}%>
           </div>
-        </div>
 
-        <div class="favorite">
           <div class="likes_buttons_<%= @post.id %>">
             <%= render partial: 'likes/like', locals: { post: @post }%>
           </div>
-        </div>
 
         <% if @post.reference != nil%>
         <p><span class="reference"><%= link_to "Amazonで見る", @post.reference, target: :_blank %></span></p>
         <% end%>
-<%# あとで編集 %><br>
+<br>
   <p><div class="container">
     <% if user_signed_in? %>
       <%= form_with(model: [@post, @comment], local: true) do |form| %>
-        <%= form.text_area :text, placeholder: "コメントを追加", rows: "2" %>
+        <%= form.text_area :text, placeholder: "コメントを追加" %>
         <%= form.submit "コメント", class: "btn btn-primary" %>
       <% end %>
     <% end %></p>
         <div class="comments">
       <h2>＜コメント一覧＞</h2>
+      
       <% @comments.each do |comment| %>
         <p>
           <strong><%= link_to comment.user.name, "/users/#{comment.user_id}" %>：</strong>
@@ -62,9 +62,7 @@
       <% end %>
     </div>
   </div>
-<%# あとで編集 %>
-    
-  </div>
+
 </div>
 
 
