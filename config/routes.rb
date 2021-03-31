@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  resources :completions
+
   post 'completion/:id' => 'completions#create', as: 'create_completion'
   delete 'completion/:id' => 'completions#destroy', as: 'destroy_completion'
 
