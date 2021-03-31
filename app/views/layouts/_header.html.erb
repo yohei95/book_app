@@ -1,8 +1,9 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
+<header class="navbar navbar-fixed-top navbar-inverse" style="background: #1D2F56;">
   <div class="container">
-    <%= link_to "BOOK App", root_path, id: "logo" %>
-   <nav>
-     <ul class="nav navbar-nav navbar-right">
+    <h4 class="pl-3"><%= link_to "BookDo", root_path, id: "logo" %></h4>
+
+    <h4 class="pl-3"><ul class="nav navbar-nav navbar-right">
+    
 
     <% if user_signed_in? %>
       <li><%= link_to "完了リスト", completions_path %></li>
@@ -19,13 +20,13 @@
       <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
       </li>
       </ul>
-      </li>
+
       <% else %>
       <li><%= link_to '新規登録', new_user_registration_path %></li>
       <li><%= link_to 'ログイン', new_user_session_path  %></li>
       <li><%= link_to '簡単ログイン（閲覧用）', static_pages_guest_sign_in_path, method: :post %></li>
       <%end %>
       </ul>
-    </nav>
+      </h4>
   </div>
 </header>

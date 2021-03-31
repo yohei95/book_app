@@ -4,14 +4,14 @@
       <%= link_to destroy_like_path(post), method: :delete, remote: true do %>
         <i class="far fa-thumbs-up fa-1x"></i>
       <% end %>
-      いいね！済み<span class="ml-3"><%= post.likes.count %>件のいいね！</span>
+      いいね！済み<%= post.likes.count %>件のいいね！
     </p>
   <% else%>
     <p>
       <%= link_to create_like_path(post), method: :post, remote: true do %>
         <i class="far fa-thumbs-up fa-2x"></i>
       <% end %>
-      いいね！する<span class="ml-3"><%= post.likes.count %>件のいいね！</span>
+      いいね！する<%= post.likes.count %>件のいいね！
     </p>
   <% end %>
 <% else %>

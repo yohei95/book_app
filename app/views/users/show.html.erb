@@ -35,7 +35,7 @@
           <% end%>
       <% unless @user.posts.any? %>
       <% if current_user ==@user %>
-          <%= link_to "最初の記事を投稿する", new_post_path, class: "btn btn-lg btn-success ml-md-4 mt-md-3 post-btn", data: {"turbolinks"=>false} %>
+          <%= link_to "最初の記事を投稿する", new_post_path, class: "btn btn-lg btn-success ml-md-4 mt-md-3 post-btn"%>
      <%end %>
      <% end %>
       <%= will_paginate @posts %>

@@ -1,5 +1,4 @@
 <li id="post_<%= post.id %>" >
-
     <div class="box">
       <div class="box-img">
         <% if post.image.attached? %>
@@ -11,26 +10,24 @@
       <div class="box-text">
         <div class="post-content">
         <h4>本のタイトル：<%= post.title %></h4>
-          投稿者：<%= link_to post.user.name, user_path(post.user_id), class: "post-user link-to"%>
+          投稿者：<%= link_to post.user.name, user_path(post.user_id)%>
               
-          <h4 class="plan">To Do：<%= post.plan %></h4>
-            <div class="completion">
+          <h4>To Do：<%= post.plan %></h4>
+
               <div id="completions_buttons_<%= post.id %>">
               <%= render partial: 'completions/completion', locals: { post: post}%>
               </div>
-            </div>
 
-            <div class="favorite">
               <div class="likes_buttons_<%= post.id %>">
               <%= render partial: 'likes/like', locals: { post: post }%>
               </div>
-            </div>
 
-          <h4><%= link_to "詳しく見る", post_path(post.id), class: "link-to"%></h4>
+
+          <h4><%= link_to "詳しく見る", post_path(post.id)%></h4>
           <span class="timestamp">
           <%= time_ago_in_words(post.created_at) %> 前に投稿</p>
           <p><% if user_signed_in? && current_user.id == post.user_id %>
-            <%= link_to "編集する", edit_post_path(post), class: "link-to"%>
+            <%= link_to "編集する", edit_post_path(post)%>
             <%= link_to "削除する", post_path(post.id) , method: :delete,
             data: { confirm: "本当に削除しますか？" } %>
           <% end %></p>
@@ -38,5 +35,4 @@
         </div>
       </div>
     </div>
-
 </li>
