@@ -20,7 +20,7 @@
         <% end %>
     
     <h4>To Do：<%= @post.plan %></h4>
-    <% if @post.memo != '' %>
+    <% if @post.memo != nil &&  @post.memo != ''%>
     <h4>メモ：<%= @post.memo %></h4>
     <%end%>
 

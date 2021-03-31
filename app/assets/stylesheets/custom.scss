@@ -76,6 +76,29 @@ p {
   text-decoration: none;
 }
 
+//// topページ ////
+
+.home-header {
+  background-image: image-url("homeimage.jpg");
+  background-position: center center;
+  background-size: cover;
+  margin: 0 calc(50% - 50vw);
+  width: 100vw;
+  position: relative;
+  padding-top: calc(250 / 640 * 100%); /* calc(画像高さ ÷ 画像横幅 × 100%) */
+
+  h1 {
+    position: absolute;
+    top: 30%;
+    left: 15%;
+  }
+  h2 {
+    position: absolute;
+    top: 50%;
+    left: 17%;
+  }
+}
+
 /* forms */
 input,
 textarea,
@@ -149,22 +172,9 @@ footer {
   }
 }
 
-//// topページ ////
-.home {
-  .controller {
-    margin-top: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
 .box {
   display: flex;
   align-items: center;
-}
-.user-picture {
-  border-radius: 50%;
 }
 
 // likes.scss
