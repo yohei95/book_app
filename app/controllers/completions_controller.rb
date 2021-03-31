@@ -1,9 +1,8 @@
 class CompletionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :done_params ,only:[:create, :destroy]
+  before_action :done_params, only: [:create, :destroy]
 
   def index
-
   end
 
   def create
