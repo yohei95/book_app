@@ -64,4 +64,4 @@ BookDo は本を読んで終わりにせず、実生活に活かすための ToD
 
 ## ER 図
 
-![book](https://user-images.githubusercontent.com/79436585/113245579-355d9b00-92f2-11eb-94cb-e205c3734523.png)
+![book](https://user-images.githubusercontent.com/79436585/113247453-0a754600-92f6-11eb-9d01-197cc6771f4d.png)
