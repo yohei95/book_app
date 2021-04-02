@@ -55,19 +55,19 @@ jobs:
 
       # rspecを走らせる記述
       # run tests!
-      - run:
-          name: run tests
-          command: |
-            mkdir /tmp/test-results
-            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
-              circleci tests split --split-by=timings)"
+      # - run:
+      #     name: run tests
+      #     command: |
+      #       mkdir /tmp/test-results
+      #       TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
+      #         circleci tests split --split-by=timings)"
 
-            bundle exec rspec \
-              --format progress \
-              --format RspecJunitFormatter \
-              --out /tmp/test-results/rspec.xml \
-              --format progress \
-              $TEST_FILES
+      #       bundle exec rspec \
+      #         --format progress \
+      #         --format RspecJunitFormatter \
+      #         --out /tmp/test-results/rspec.xml \
+      #         --format progress \
+      #         $TEST_FILES
 
       # collect reports
       - store_test_results:
@@ -76,10 +76,10 @@ jobs:
           path: /tmp/test-results
           destination: test-results
 
-      # - add_ssh_keys:
-      #     fingerprints:
-      #       - "28:39:c3:5b:5c:09:2c:b4:13:b6:ae:10:fd:5e:b3:60"
+      - add_ssh_keys:
+          fingerprints:
+            - "28:39:c3:5b:5c:09:2c:b4:13:b6:ae:10:fd:5e:b3:60"
 
-      # - deploy:
-      #     name: Capistrano deploy
-      #     command: bundle exec cap production deploy
+      - deploy:
+          name: Capistrano deploy
+          command: bundle exec cap production deploy
