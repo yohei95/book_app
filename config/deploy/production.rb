@@ -67,4 +67,3 @@ server '54.250.78.62', user: 'ec2-user', roles: %w{app db web}
 #   forward_agent: true,
 #   auth_methods: %w[publickey]
 # }
-set :ssh_options, keys: '~/.ssh/yohei.pem'
