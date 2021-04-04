@@ -15,8 +15,8 @@ set :rbenv_ruby, '2.6.5'
 
 # どの公開鍵を利用してデプロイするか。
 set :ssh_options, auth_methods: ['publickey'],
-                                  keys: ['~/.ssh/yohei.pem'] 
-#                                   keys:['~/.ssh/id_rsa_2839c35b5c092cb413b6ae10fd5eb360']  
+                                  # keys: ['~/.ssh/yohei.pem'] 
+                                keys:['~/.ssh/id_rsa_2839c35b5c092cb413b6ae10fd5eb360']  
 
 
 # プロセス番号を記載したファイルの場所
