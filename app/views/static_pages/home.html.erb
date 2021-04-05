@@ -40,7 +40,7 @@
       <ol class="posts px-lg-5 ml-lg-5">
         <%= render @posts%>
       </ol>
-        <%= will_paginate @posts %>
+        <%= will_paginate @posts, previous_label: '&lt 前へ', next_label: '次へ &gt' %>
     </div>
     
   </div>
