@@ -5,7 +5,7 @@ BookDo は本を読んで終わりにせず、実生活に活かすための ToD
 
 [リンク]：( https://bookdo.net)
 
-![177ab47e05d11df4fe1245d2546ec83d](https://user-images.githubusercontent.com/79436585/113232977-28807d80-92d9-11eb-9da4-72629dc00d1e.jpeg)
+![トップページ](https://user-images.githubusercontent.com/79436585/113660586-69b0cd00-96df-11eb-9d99-b3851d811804.jpeg)
 
 ## 使用技術
 
@@ -61,6 +61,11 @@ BookDo は本を読んで終わりにせず、実生活に活かすための ToD
 - シンプルで見やすい UI を意識
 - いいね、完了、フォロー機能において Ajax を採用
 - 投稿と完了の時間軸を切り分け、尚且つフォロー機能や完了リストを搭載することで利用者のモチベーションに配慮
+- CircleCI を用いてテスト、デプロイを効率化
+
+## インフラ構成図
+
+![名称未設定ファイル (1)](https://user-images.githubusercontent.com/79436585/113660415-f7d88380-96de-11eb-9fda-a53915e32167.png)
 
 ## ER 図
 
