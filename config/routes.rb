@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
   post '/static_pages/guest_sign_in', to:'static_pages#new_guest'
+  get '/completion', to:'completions#index'
 
   resources :users, only: [:index,:show,:edit ,:update,:destroy] 
   resources :users do
@@ -12,13 +13,12 @@ Rails.application.routes.draw do
   end
   resources :posts do
     resources :comments
+    resource  :likes, only: [:create, :destroy]
+    resource  :completions, only: [:create, :destroy]
   end
 
-  resources :completions
+  # resources :completions
+  # post 'completion/:id' => 'completions#create', as: 'create_completion'
+  # delete 'completion/:id' => 'completions#destroy', as: 'destroy_completion'
 
-  post 'completion/:id' => 'completions#create', as: 'create_completion'
-  delete 'completion/:id' => 'completions#destroy', as: 'destroy_completion'
-
-  post 'like/:id' => 'likes#create', as: 'create_like'
-  delete 'like/:id' => 'likes#destroy', as: 'destroy_like'
 end
