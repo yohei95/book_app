@@ -6,16 +6,16 @@ class CompletionsController < ApplicationController
   end
 
   def create
-    Completion.create(user_id: current_user.id, post_id: params[:id])
+    Completion.create(user_id: current_user.id, post_id: params[:post_id])
   end
 
   def destroy
-    Completion.find_by(user_id: current_user.id, post_id: params[:id]).destroy
+    Completion.find_by(user_id: current_user.id, post_id: params[:post_id]).destroy
   end
 
   private
 
   def done_params
-    @post = Post.find(params[:id])
+    @post = Post.find(params[:post_id])
   end
 end
