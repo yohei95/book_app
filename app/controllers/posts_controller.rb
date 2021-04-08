@@ -36,6 +36,10 @@ class PostsController < ApplicationController
     redirect_to root_path
   end
 
+  def search
+    @posts = Post.search(params[:keyword]).order(created_at: :desc).page(params[:page]).limit(5)
+  end
+
   private
 
   def post_params
