@@ -5,6 +5,7 @@ class PostsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @post.comments.includes(:user)
+    @post_tags = @post.tags
   end
 
   def new
@@ -12,8 +13,10 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.new(post_params)
+    tag_list = params[:post][:tag_name].split(nil)
     if @post.save
+      @post.save_tag(tag_list)
       redirect_to root_path
     else
       render :new
@@ -36,8 +39,15 @@ class PostsController < ApplicationController
     redirect_to root_path
   end
 
+  def tags
+    @tag_list = Tag.all
+    @tag = Tag.find(params[:tag_id])
+    @posts = @tag.posts.all
+  end
+
   def search
     @posts = Post.search(params[:keyword]).order(created_at: :desc).page(params[:page]).limit(5)
+    @tag_list = Tag.find(Tagmap.group(:tag_id).order('count(tag_id) desc').limit(10).pluck(:tag_id))
   end
 
   private

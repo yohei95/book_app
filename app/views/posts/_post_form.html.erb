@@ -12,6 +12,10 @@
     <%= f.label :メモ %>　※任意
     <%= f.text_field :memo,  class: 'form-control', id: 'book_memo' %>
   </div>
+        <div>
+        <p class= "form-title">#タグ（任意）※半角スペース区切りでタグ付けできます</p>
+        <%= f.text_field :tag_name, placeholder: "例）プログラミング Ruby", class: 'form-control' %>
+      </div>
     <div class = 'form-group'>
     <%= f.label :Amazonリンク %>　※任意
     <%= f.text_field :reference, class: 'form-control', id: 'book_reference' %>

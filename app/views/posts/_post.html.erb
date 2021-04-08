@@ -22,8 +22,13 @@
               <%= render partial: 'likes/like', locals: { post: post }%>
               </div>
 
+<div class="post-tag">
+          <h4><%= link_to "詳しく見る", post_path(post.id)%></h4>　　　
 
-          <h4><%= link_to "詳しく見る", post_path(post.id)%></h4>
+        <% post.tags.each do |tag|%>
+          <%= link_to "##{tag.tag_name}", tag_posts_path(tag),class: "tag-link" %>　
+        <% end %>
+</div>
           <span class="timestamp">
           <%= time_ago_in_words(post.created_at) %> 前に投稿</p>
           <p><% if user_signed_in? && current_user.id == post.user_id %>
