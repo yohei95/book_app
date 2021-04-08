@@ -99,6 +99,33 @@ p {
   }
 }
 
+form input[type="submit"] {
+  border-radius: 20px;
+  border: 0;
+  font-size: 20px;
+}
+
+form input[type="submit"]:hover {
+  background-color: #2e4c8c;
+  color: white;
+}
+
+.search-form {
+  text-align: center;
+  padding-top: 32px;
+}
+
+.search-input {
+  font-size: 20px;
+  width: 40%;
+  margin-right: 10px;
+  border-radius: 20px;
+}
+
+.search-form .search-btn {
+  width: 10%;
+}
+
 /* forms */
 input,
 textarea,
@@ -189,4 +216,5 @@ footer {
 }
 .btn {
   background-color: #2e4c8c;
+  border-radius: 20px;
 }

@@ -2,13 +2,22 @@
         <div class="home-header mt-n3">
           <h1>ToDo型、読書管理アプリ</h1>
           <h2 class="d-lg-block d-none display-3">読書で得た学びを日常に取り入れましょう</h2>
+
+
         </div>
 
 
+          <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form") do |form| %>
+          <%= form.text_field :keyword, placeholder: "　本のタイトルで検索", class: "search-input" %>
+          <%= form.submit "検索", class: "search-btn" %>
+          <% end %>
 
 <div id="fh5co-portfolio">
   <div class="col-md-9">
-    <p><%= link_to "新規投稿", new_post_path, class: "btn btn-primary btn-lg btn-record" %></p>
+      <p><%= link_to "新規投稿", new_post_path, class: "btn btn-primary btn-lg btn-record" %>
+
+
+</p>
 
     <div class="container">
     <h3 class="text-center pb-md-1 mb-md-5">フォロー中のユーザの投稿</h3>

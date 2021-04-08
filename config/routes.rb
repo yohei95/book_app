@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     get :followers, on: :member
   end
   resources :posts do
+    collection do
+      get 'search'
+    end
     resources :comments
     resource  :likes, only: [:create, :destroy]
     resource  :completions, only: [:create, :destroy]
