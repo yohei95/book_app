@@ -22,7 +22,7 @@ BookDo は本を読んで終わりにせず、実生活に活かすための ToD
 - インフラ・開発環境
   - MySQL: ５.6
   - Docker/docker-compose
-  - AWS(EC2・S3・ACM・Route53)
+  - AWS(VPC・EC2・S3・ACM・Route53)
   - CircleCI
 
 ## なぜ BookDo を開発したか？
