@@ -3,11 +3,11 @@
   <aside class="col-md-4">
     <section class="user_info">
 
-  <% if @user.image.attached? %>
-    <%= image_tag @user.image.variant(resize: '50x50') %>
-  <% else %>
-    <%= image_tag 'noimageman.png', :size =>'50x50' %>
-  <% end %>
+  <%# <% if @user.image.attached? %> 
+    <%# <%= image_tag @user.image.variant(resize: '50x50') %> 
+  <%# <% else %> 
+    <%# <%= image_tag 'noimageman.png', :size =>'50x50' %> 
+  <%# <% end %> 
 
       <h1><%= @user.name %></h1>
       <span><%= link_to "プロフィール", @user %></span>

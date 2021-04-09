@@ -47,7 +47,7 @@ class PostsController < ApplicationController
 
   def search
     @posts = Post.search(params[:keyword]).order(created_at: :desc).page(params[:page]).limit(5)
-    @tag_list = Tag.find(Tagmap.group(:tag_id).order('count(tag_id) desc').limit(10).pluck(:tag_id))
+    @tag_list = Tag.find(TagMap.group(:tag_id).order('count(tag_id) desc').limit(10).pluck(:tag_id))
   end
 
   private
