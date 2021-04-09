@@ -20,8 +20,8 @@ Rails.application.routes.draw do
     resource  :completions, only: [:create, :destroy]
   end
 
-  # resources :completions
-  # post 'completion/:id' => 'completions#create', as: 'create_completion'
-  # delete 'completion/:id' => 'completions#destroy', as: 'destroy_completion'
+  resources :tags do
+    get 'posts', to: 'posts#tags'
+  end
 
 end

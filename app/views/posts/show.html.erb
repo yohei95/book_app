@@ -29,6 +29,12 @@
             <%= render partial: 'completions/completion', locals: { post: @post}%>
           </div>
 
+
+        <% @post.tags.each do |tag|%>
+          <%= link_to "##{tag.tag_name}", tag_posts_path(tag),class: "tag-link" %>　
+        <% end %>
+
+
           <div class="likes_buttons_<%= @post.id %>">
             <%= render partial: 'likes/like', locals: { post: @post }%>
           </div>
