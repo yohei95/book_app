@@ -1,43 +1,37 @@
 <li id="post_<%= post.id %>" >
-    <div class="box">
-      <div class="box-img">
-        <% if post.image.attached? %>
-          <%= image_tag post.image.variant(resize: '200x200') %>
-        <% else %>
-          <%= image_tag 'noimage.png',size: "150x200" %>
-        <% end %>
+  <div class="box">
+    <div class="box-img">
+      <% if post.image.attached? %>
+        <%= image_tag post.image.variant(resize: '200x200') %>
+      <% else %>
+        <%= image_tag 'noimage.png',size: "150x200" %>
+      <% end %>
+    </div>
+    
+    <div class="post-content">
+      <h4>本のタイトル：<%= post.title %></h4>
+      投稿者：<%= link_to post.user.name, user_path(post.user_id)%>              
+      <h4>To Do：<%= post.plan %></h4>
+      <div id="completions_buttons_<%= post.id %>">
+        <%= render partial: 'completions/completion', locals: { post: post}%>
       </div>
-      <div class="box-text">
-        <div class="post-content">
-        <h4>本のタイトル：<%= post.title %></h4>
-          投稿者：<%= link_to post.user.name, user_path(post.user_id)%>
-              
-          <h4>To Do：<%= post.plan %></h4>
-
-              <div id="completions_buttons_<%= post.id %>">
-              <%= render partial: 'completions/completion', locals: { post: post}%>
-              </div>
-
-              <div class="likes_buttons_<%= post.id %>">
-              <%= render partial: 'likes/like', locals: { post: post }%>
-              </div>
-
-<div class="post-tag">
-          <h4><%= link_to "詳しく見る", post_path(post.id)%></h4>　　　
-
+      <div class="likes_buttons_<%= post.id %>">
+        <%= render partial: 'likes/like', locals: { post: post }%>
+      </div>
+      <div class="post-tag">
+        <h4><%= link_to "詳しく見る", post_path(post.id)%></h4>　　　
         <% post.tags.each do |tag|%>
           <%= link_to "##{tag.tag_name}", tag_posts_path(tag),class: "tag-link" %>　
         <% end %>
-</div>
-          <span class="timestamp">
-          <%= time_ago_in_words(post.created_at) %> 前に投稿</p>
-          <p><% if user_signed_in? && current_user.id == post.user_id %>
+      </div>
+      <span class="timestamp">
+        <%= time_ago_in_words(post.created_at) %> 前に投稿</p>
+        <p><% if user_signed_in? && current_user.id == post.user_id %>
             <%= link_to "編集する", edit_post_path(post)%>
             <%= link_to "削除する", post_path(post.id) , method: :delete,
             data: { confirm: "本当に削除しますか？" } %>
           <% end %></p>
-          </span>
-        </div>
-      </div>
+      </span>
     </div>
+  </div>
 </li>

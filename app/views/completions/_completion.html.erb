@@ -1,20 +1,21 @@
 <h4>  
   <% if user_signed_in? && current_user== post.user%>
-  <% if current_user.completed_by?(post.id) %>
-    <p>達成状況：<%= link_to post_completions_path(post.id), method: :delete, remote: true do %>
-        <i class="far fa-check-square"></i>
+    <% if current_user.completed_by?(post.id) %>
+      <p>達成状況：<%= link_to post_completions_path(post.id), method: :delete, remote: true do %>
+      <i class="far fa-check-square"></i>
       <% end %>完了
-    </p>
-  <% else%>
-    <p>達成状況：<%= link_to post_completions_path(post.id), method: :post, remote: true do %>
+      </p>
+    <% else%>
+      <p>達成状況：<%= link_to post_completions_path(post.id), method: :post, remote: true do %>
         <i class="far fa-square"></i>
       <% end %>未完了
-    </p>
-  <% end %>
+      </p>
+    <% end %>
   <% else %>
-  <% if post.user.completed_by?(post.id) %>
-  達成状況：<i class="far fa-check-square"></i> 完了
-  <%else%>
-  達成状況：<i class="far fa-square"></i> 未完了
-  <%end%>
-<% end %></h4>
+    <% if post.user.completed_by?(post.id) %>
+      達成状況：<i class="far fa-check-square"></i> 完了
+    <%else%>
+      達成状況：<i class="far fa-square"></i> 未完了
+    <%end%>
+  <% end %>
+</h4>

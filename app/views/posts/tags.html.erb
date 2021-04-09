@@ -1,9 +1,8 @@
-    <div class="container">
+<div class="container">
   <h1 class="text-center pb-md-1 mb-md-5"><%= "##{@tag.tag_name}" %> のタグの投稿 <%= "#{@posts.count}件" %></h1>
     <div class="posts px-lg-5 ml-lg-5">
-
     <% @posts.each do |post| %>
       <%= render post %>
     <% end %>
-    </div>
-    </div> 
+  </div>
+</div> 

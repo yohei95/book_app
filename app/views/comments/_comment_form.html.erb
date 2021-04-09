@@ -1,0 +1,6 @@
+<% if user_signed_in? %>
+  <%= form_with(model: [@post, @comment],id: "form") do |form| %>
+    <%= form.text_area :text, placeholder: "コメントを追加" %>
+    <%= form.submit "コメント", class: "btn btn-primary" ,id: "submit"%>
+  <% end %>
+<% end %>
