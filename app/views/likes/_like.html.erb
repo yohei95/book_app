@@ -1,17 +1,17 @@
-  <% if user_signed_in? %>
+<% if user_signed_in? %>
   <% if current_user.liked_by?(post.id) %>
     <p>
-      <%= link_to post_likes_path(post.id), method: :delete, remote: true do %>
-        <i class="far fa-thumbs-up fa-1x"></i>
-      <% end %>
-      いいね！済み<%= post.likes.count %>件のいいね！
+    <%= link_to post_likes_path(post.id), method: :delete, remote: true do %>
+      <i class="far fa-thumbs-up fa-1x"></i>
+    <% end %>
+    いいね！済み<%= post.likes.count %>件のいいね！
     </p>
   <% else%>
     <p>
-      <%= link_to post_likes_path(post.id), method: :post, remote: true do %>
-        <i class="far fa-thumbs-up fa-2x"></i>
-      <% end %>
-      いいね！する<%= post.likes.count %>件のいいね！
+    <%= link_to post_likes_path(post.id), method: :post, remote: true do %>
+      <i class="far fa-thumbs-up fa-2x"></i>
+    <% end %>
+    いいね！する<%= post.likes.count %>件のいいね！
     </p>
   <% end %>
 <% else %>
