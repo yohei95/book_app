@@ -8,9 +8,12 @@
     <%= form.submit "検索", class: "search-btn" %>
   <% end %>
   <div class="text-center">人気のタグ
+  
     <% @tag_list.each do |list| %>
+    <% if list.posts.count != 0 %>
       <%= link_to "##{list.tag_name}", tag_posts_path(tag_id: list.id), class: 'tag-link' %>
       <%= "(#{list.posts.count})" %>
+    <% end %>
     <% end %>
   </div> 
   </div>
