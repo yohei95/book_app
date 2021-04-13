@@ -19,7 +19,8 @@
         <%= f.text_field :memo,  class: 'form-control', id: 'book_memo' %>
       </div>
       <div>
-        <p class= "form-title">#タグ　※任意　半角スペース区切りで複数入力できます</p>
+        <div class = 'form-group'>
+        <%= f.label :"#タグ" %>　※任意　半角スペース区切りで複数入力できます
         <%= f.text_field :tag_name, placeholder: "例）プログラミング Ruby", class: 'form-control' %>
       </div>
       <div class = 'form-group'>
