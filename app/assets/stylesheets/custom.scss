@@ -144,13 +144,6 @@ input {
   }
 }
 
-// .field_with_errors {
-//   @extend .has-error;
-//   .form-control {
-//     color: $state-danger-text;
-//   }
-// }
-
 // フッター
 footer {
   margin-top: 45px;
@@ -199,6 +192,11 @@ footer {
   display: flex;
   align-items: center;
   box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+}
+.box-img {
+  width: 150px;
+  padding-left: 10px;
 }
 .post-tag {
   display: flex;
